@@ -1,0 +1,167 @@
+﻿@page
+@model CreateModel
+@{
+    ViewData["Title"] = "Create";
+    int maxFileCount = 5;
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f5f9;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+
+
+        h2 {
+            color: #6699cc;
+            margin-bottom: 20px;
+        }
+
+
+
+        .btn-primary {
+            background-color: #6699cc;
+            border-color: #6699cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+
+
+
+
+        <form method="post" asp-action="Create" enctype="multipart/form-data">
+
+
+
+            <div class="form-group">
+                <label for="Project">Project:</label>
+                <input type="text" class="form-control" id="ProjectName" name="ProjectName" required>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="ID">ID:</label>
+                <input type="text" class="form-control" id="ID" name="ID" required>
+            </div>
+
+
+
+
+
+            <div class="form-group">
+                <label for="Discipline">Discipline:</label>
+                <select class="custom-select" id="Discipline" name="Discipline" required>
+                    <option value="">Select a Discipline</option>
+                    <option value="D&E">D&E</option>
+                    <option value="Pipeline">Pipeline</option>
+                    <option value="Piping">Piping</option>
+                    <option value="Instrumentation">Instrumentation</option>
+                    <option value="Process">Process</option>
+                    <option value="Material and Corrosion">Material and Corrosion</option>
+                    <option value="Structural">Structural</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="Subject">Subject:</label>
+                <input type="text" class="form-control" id="Title" name="Subject" required>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="Company Standard Ref Doc">Company Standard Ref Doc:</label>
+<textarea class="form-control" id="Company Standard Ref Doc" name="Company Standard Ref Doc" rows="4" required></textarea>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="Standard Requirement">Standard Requirement:</label>
+<textarea class="form-control" id="Standard Requirement" name="Standard Requirement" rows="4" required></textarea>
+            </div>
+
+
+
+            @* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script>
+                                $(document).ready(function () {
+                                    var disciplines = ["D&E", "Pipeline", "Piping", "Instrumentation", "Process", "Material and Corrosion", "Structural", "Electrical", "Mechanical"];
+                                    var select = $("#Discipline");
+
+
+
+                                    disciplines.sort(); // Sort the disciplines alphabetically
+
+
+
+                                    $.each(disciplines, function (index, value) {
+                                        select.append($("<option></option>").attr("value", value).text(value));
+                                    });
+                                });
+                </script> *@
+
+
+
+            <div class="form-group">
+                <label for="Contractor Observation">Contractor Observation:</label>
+<textarea class="form-control" id="Contractor Observation" name="Contractor Observation" rows="4" required></textarea>
+            </div>
+
+
+
+            <div class="form-group">
+                <label for="Company Response">Company Response:</label>
+<textarea class="form-control" id="Company Response" name="Company Response" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="fileUpload">Choose up to 5 files:</label>
+                <input type="file" name="fileUpload" id="fileUpload" style="display: none;" accept=".jpg, .jpeg, .png, .pdf" />
+                <input type="button" value="Attach Files" onclick="document.getElementById('fileUpload').click();" />
+            </div>
+
+
+
+            <div id="fileList">
+                <!-- Display selected files here -->
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+        </form>
+    </div>
+</body>
+</html>
